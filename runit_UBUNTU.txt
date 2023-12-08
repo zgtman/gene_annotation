@@ -1,0 +1,44 @@
+To run a Python script by double-clicking on Ubuntu, you can create a desktop shortcut. Follow these steps:
+
+1. **Create a Python Script:**
+   First, create your Python script (e.g., `gene_enrichment_tool.py`) with the desired functionality. Make sure it has the necessary shebang line at the top:
+
+   ```python
+   #!/usr/bin/env python3
+   # Your Python script code here
+   ```
+
+2. **Make the Script Executable:**
+   Open a terminal, navigate to the directory containing your script, and run:
+
+   ```bash
+   chmod +x gene_enrichment_tool.py
+   ```
+
+   This command makes the script executable.
+
+3. **Create a Desktop Shortcut:**
+   Right-click on your desktop, select "Create a new document," and choose "Empty Document." Open the empty document and add the following content:
+
+   ```desktop
+   [Desktop Entry]
+   Name=Gene Enrichment Tool
+   Exec=/path/to/your/script.py
+   Icon=/path/to/your/logo.png
+   Type=Application
+   Terminal=false
+   ```
+
+   Replace `/path/to/your/script.py` with the actual path to your Python script, and `/path/to/your/logo.png` with the path to your logo.
+
+4. **Save and Make Executable:**
+   Save the file with a `.desktop` extension, for example, `Gene_Enrichment_Tool.desktop`. After saving, make the desktop file executable:
+
+   ```bash
+   chmod +x Gene_Enrichment_Tool.desktop
+   ```
+
+   Now, you should be able to double-click on the desktop shortcut to run your Python script.
+
+Please note that the instructions may vary slightly depending on your Ubuntu desktop environment. This guide assumes you're using a standard Ubuntu desktop with a file manager that 
+supports desktop shortcuts
