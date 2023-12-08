@@ -78,7 +78,7 @@ def run_enrichment():
     # Extract directory from input file path
     input_directory = os.path.dirname(input_file_path)
 
-    gene_info_file_path = "/Users/broz/Documents/python/anotace_genes/gene_info.csv"  # Replace with the actual path
+    gene_info_file_path = "~/repos/gene_annotation/gene_info.csv"  # Replace with the actual path
 
     # Create the output file path in the same directory as the input file
     output_file_path = os.path.join(input_directory, "output.xlsx")
@@ -102,7 +102,7 @@ run_button = tk.Button(app, text="Run Enrichment", command=run_enrichment)
 result_label = tk.Label(app, text="")
 
 # Load and display the logo
-logo_path = "/Users/broz/Downloads/bioxsys.png"  # Replace with the actual path to your logo
+logo_path = "~/repos/gene_annotation/bioxsys.png"  # Replace with the actual path to your logo 
 if os.path.exists(logo_path):
     logo_image = Image.open(logo_path)
     logo_image = logo_image.resize((int(logo_image.width * 0.1), int(logo_image.height * 0.1)))  # Resize to 10%
