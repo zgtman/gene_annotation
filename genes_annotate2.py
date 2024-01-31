@@ -7,6 +7,9 @@ import xlsxwriter
 import os
 from PIL import Image, ImageTk  # Ensure you have the Pillow library installed
 
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
 class Tooltip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -39,13 +42,13 @@ def enrich_input_file(input_file_path, gene_info_file_path, output_file_path):
     gene_info = {}
 
     # Read gene info file and create a dictionary
-    with open(gene_info_file_path, 'r') as gene_info_file:
+    with open(gene_info_file_path, 'r', encoding='utf-8', errors='ignore') as gene_info_file:
         gene_info_reader = csv.DictReader(gene_info_file)
         for row in gene_info_reader:
             gene_info[row['gene_symbol']] = row
 
     # Read input file and annotate genes
-    with open(input_file_path, 'r') as input_file, xlsxwriter.Workbook(output_file_path) as workbook:
+    with open(input_file_path, 'r', encoding='utf-8', errors='ignore') as input_file, xlsxwriter.Workbook(output_file_path) as workbook:
         worksheet = workbook.add_worksheet()
 
         # Write header row
@@ -78,7 +81,7 @@ def run_enrichment():
     # Extract directory from input file path
     input_directory = os.path.dirname(input_file_path)
 
-    gene_info_file_path = "~/repos/gene_annotation/gene_info.csv"  # Replace with the actual FULL path
+    gene_info_file_path = os.path.join(script_dir, "gene_info.csv")
 
     # Create the output file path in the same directory as the input file
     output_file_path = os.path.join(input_directory, "output.xlsx")
@@ -102,7 +105,7 @@ run_button = tk.Button(app, text="Run Enrichment", command=run_enrichment)
 result_label = tk.Label(app, text="")
 
 # Load and display the logo
-logo_path = "/Users/broz/repos/gene_annotation/bioxsys.png"  # Replace with the actual path to your logo
+logo_path = os.path.join(script_dir, "bioxsys.png")
 if os.path.exists(logo_path):
     logo_image = Image.open(logo_path)
     logo_image = logo_image.resize((int(logo_image.width * 0.1), int(logo_image.height * 0.1)))  # Resize to 10%
